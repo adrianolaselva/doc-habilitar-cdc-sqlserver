@@ -119,7 +119,9 @@ SELECT * FROM example_cdc.cdc.fn_cdc_get_all_changes_dbo_users(@begin_lsn,@end_l
 
 ## Conclusão
 
-Na minha humilde opinião o CDC deve ser utilizado com parcimônia, pois se a base de dados já possui problemas de performance, o mesmo tende aumentar, dado que os dados são armazenados utilizando do próprio SGBC, e o volume de escritas aumenta de forma exponencial. Ou Seja, em uma base de dados que já possui problemas de performance, muitas vezes pelo excesso de normalização dos dados esta abordagem deve ser aplicada com extrema cautela. Outro ponto é que por um banco relacional apenas escala de forma vertical, dado este cenário, o preço e a mão de obra de infra-estrutura tente a aumentar até chegar ao limite da tecnologia (limite de hardware) e tornar inviável manter a infra-estrutura.
+Na minha humilde opinião uma base de dados que já possui problemas de performance, muitas vezes pelo excesso de normalização dos dados esta abordagem deve ser aplicada com extrema cautela. Outro ponto é que por ser um banco relacional apenas escala de forma vertical, dado este cenário, o preço e a mão de obra de infra-estrutura tente a aumentar até chegar ao limite da tecnologia (limite de hardware) e tornar inviável manter a infra-estrutura.
+
+Salientando que no caso do sqlserver, até o momento desconheço como os outros bancos de dados armazenam estas informações.
 
 ## Referências
 
