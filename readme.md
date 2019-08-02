@@ -70,11 +70,11 @@ select is_cdc_enabled,* from sys.databases where name in ('example_cdc')
 
 ## Functions, procedures e tabelas geradas por schema quando habilitado o CDC
 
-![Estrutura de dados após habilitado CDC](images/example_cdc-after-enable.png)
+![Functions, procedures e tabelas geradas por schema quando habilitado o CDC](images/example_cdc-fns-per-table.png)
 
 ## Exemplo de function gerada para obter os dados atravéz do CDC
 
-![Estrutura de dados após habilitado CDC](images/example_cdc-after-enable.png)
+![Exemplo de function gerada para obter os dados atravéz do CDC](images/example_cdc-fn-per-table.png)
 
 ## Fluxo de dados do Change Data Capture
 
