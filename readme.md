@@ -83,6 +83,21 @@ A ilustração seguinte mostra o fluxo de dados principal para a captura de dado
 ![Fluxo de dados do Change Data Capture](images/example_cdc-workflow-cdc.png)
 
 
+## Configuração de tempo em que um log fica armazenado
+
+No CDC, há um processo de limpeza automática que é executado em intervalos regulares. Por padrão, o intervalo é de 3 dias, mas pode ser configurado. Observamos que, quando ativamos o CDC no banco de dados, existe um procedimento armazenado do sistema adicional criado com o nome sys.sp_cdc_cleanup_change_table, que limpa todos os dados rastreados no intervalo. 
+
+```sql
+USE example_cdc
+EXEC sys.sp_cdc_cleanup_change_table   
+  @capture_instance='dbo_users',   
+  @low_water_mark=NULL,  
+  @threshold=5000
+```
+
+## Procedimento de limpeza
+
+
 ## Resalvas
 
 - No caso do Sqlserver as informações ficam armazenadas não utilizando logs a nível de arquivo, e sim a nível de tabelas, neste caso, sendo assim deve ser utilizado com cautela, pois se o banco de dados já se encontra com baixa performance habilitando o cdc você pode estar gerando outros problemas maiores.
