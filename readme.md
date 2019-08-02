@@ -72,7 +72,7 @@ select is_cdc_enabled,* from sys.databases where name in ('example_cdc')
 
 ![Estrutura de dados após habilitado CDC](images/example_cdc-after-enable.png)
 
-## Exemplo de functin gerada para obter os dados atravéz do CDC
+## Exemplo de function gerada para obter os dados atravéz do CDC
 
 ![Estrutura de dados após habilitado CDC](images/example_cdc-after-enable.png)
 
@@ -92,7 +92,7 @@ A ilustração seguinte mostra o fluxo de dados principal para a captura de dado
 
 ## Conclusão
 
-Na minha humilde opinião o CDC deve ser utilizado com parcimônia, pois se a base de dados já possui problemas de performance, o mesmo tende aumentar, dado que os dados são armazenados utilizando do próprio SGBC, e o volume de escritas aumenta de forma exponencial. Ou Seja, em uma base de dados que já possui problemas de performance, muitas vezes pelo excesso de normalização dos dados esta abordagem deve ser aplicada com extrema cautela. Outro ponto é que por um banco relacional apenas escalar de forma vertical o preço e a mão de obra de infra-estrutura tente a aumentar até chegar ao limite da tecnologia (limite de hardware) e tornar inviável manter a infra-estrutura.
+Na minha humilde opinião o CDC deve ser utilizado com parcimônia, pois se a base de dados já possui problemas de performance, o mesmo tende aumentar, dado que os dados são armazenados utilizando do próprio SGBC, e o volume de escritas aumenta de forma exponencial. Ou Seja, em uma base de dados que já possui problemas de performance, muitas vezes pelo excesso de normalização dos dados esta abordagem deve ser aplicada com extrema cautela. Outro ponto é que por um banco relacional apenas escala de forma vertical, dado este cenário, o preço e a mão de obra de infra-estrutura tente a aumentar até chegar ao limite da tecnologia (limite de hardware) e tornar inviável manter a infra-estrutura.
 
 
 ## Referências
