@@ -69,9 +69,24 @@ select is_cdc_enabled,* from sys.databases where name in ('example_cdc')
 ![Estrutura de dados após habilitado CDC](images/example_cdc-after-enable.png)
 
 
+## Fluxo de dados do Change Data Capture
+
+A ilustração seguinte mostra o fluxo de dados principal para a captura de dados de alteração.
+
+![Fluxo de dados do Change Data Capture](images/example_cdc-workflow-cdc.png)
+
+
 ## Resalvas
 
 - No caso do Sqlserver as informações ficam armazenadas não utilizando logs a nível de arquivo, e sim a nível de tabelas, neste caso, sendo assim deve ser utilizado com cautela, pois se o banco de dados já se encontra com baixa performance habilitando o cdc você pode estar gerando outros problemas maiores.
 
 ![Arquitetura da solução](images/example_cdc-resalvas.png)
 
+
+
+## Referências
+
+
+- [Habilitar e desabilitar o Change Data Capture (SQL Server)](https://docs.microsoft.com/pt-br/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017)
+
+- [Sobre o change data capture (SQL Server)](https://docs.microsoft.com/pt-br/sql/relational-databases/track-changes/about-change-data-capture-sql-server?view=sql-server-2017)
