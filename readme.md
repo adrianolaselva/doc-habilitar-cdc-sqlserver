@@ -1,5 +1,5 @@
 
-# Habilitar change data capture SqlServer para uso de estratégia de estrangulamento na migração de sistemas legados.
+# Habilitar change data capture no SqlServer para uso de estratégia de estrangulamento na migração de sistemas legados.
 
 ## Criação de banco de dados
 
