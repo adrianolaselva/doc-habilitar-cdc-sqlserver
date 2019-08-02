@@ -64,13 +64,9 @@ select is_cdc_enabled,* from sys.databases where name in ('example_cdc')
 ![Resultado da consulta de verificação de que se o cdc se encontra habilitado para a base de dados](images/example_cdc-verify-database-is-enable.png)
 
 
-## Validar se a CDC esta habilitado para a tabela do banco de dados
+## Schema gerado para armazenar os logs de alterações na base de dados
 
-```sql
-select is_tracked_by_cdc,* from sys.tables where name in ('users')
-```
-
-![Resultado da consulta de verificação de que se o cdc se encontra habilitado para a tabela](images/example_cdc-verify-table-is-enable.png)
+![Estrutura de dados após habilitado CDC](images/example_cdc-after-enable.png)
 
 
 ## Resalvas
