@@ -105,9 +105,7 @@ SELECT * FROM example_cdc.cdc.fn_cdc_get_all_changes_dbo_users(@begin_lsn,@end_l
 
 ![Exemplo de function gerada para obter os dados atravéz do CDC](images/example_cdc-fn-per-table.png)
 
-## Fluxo de dados do Change Data Capture
-
-A ilustração seguinte mostra o fluxo de dados principal para a captura de dados de alteração.
+## Fluxo de captura
 
 ![Fluxo de dados do Change Data Capture](images/example_cdc-workflow-cdc.png)
 
@@ -118,15 +116,6 @@ A ilustração seguinte mostra o fluxo de dados principal para a captura de dado
 
 ![Arquitetura da solução](images/example_cdc-resalvas.png)
 
-## Alternativa para não honerar a base de dados relacional
-
-Uma alternativa a não ser discartada é fazer uso de persistência poliglota, ou seja, os dados continuam sendo persistidos da mesma forma e uma biblioteca pode ser adicionada para fazer este controle, assim não honerando o banco de dados relacional e possibilitando o uso de bancos multi-paradigma.
-
-Segue algumas referências:
-
-- [laravel-scout](https://laravel.com/docs/5.8/scout)
-- [bonsai-elasticsearch-rails](https://docs.bonsai.io/article/97-ruby-on-rails)
-- [Como manter o Elasticsearch sincronizado com um banco de dados relacional usando o Logstash](https://www.elastic.co/pt/blog/how-to-keep-elasticsearch-synchronized-with-a-relational-database-using-logstash)
 
 ## Conclusão
 
