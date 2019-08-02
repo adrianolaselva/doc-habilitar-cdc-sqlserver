@@ -1,5 +1,5 @@
 
-# Habilitar change data capture no SqlServer para uso de estratégia de estrangulamento na migração de sistemas legados.
+# Habilitar change data capture no SqlServer.
 
 ## Criação de banco de dados
 
@@ -89,6 +89,9 @@ SELECT @end_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal', @end_
 
 SELECT * FROM example_cdc.cdc.fn_cdc_get_all_changes_dbo_users(@begin_lsn,@end_lsn,'all') 
 ```
+
+![Listagem de evento gerado](images/example_cdc-log-1.png)
+
 
 ## Schema gerado para armazenar os logs de alterações na base de dados
 
