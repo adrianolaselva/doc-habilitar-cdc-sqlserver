@@ -1,5 +1,9 @@
 
-# Habilitar change data capture no SqlServer.
+# Habilitar CDC no SQL Server.
+
+Este tutorial tem por objetivo mostrar de forma prática como habilitar o CDC (change data capture) no SQL Server.
+
+Esta publicação faz parte da série de publicações que pretendo fazer sobre técnicas de ETL (extract-transform and load) e persistência poliglota, seja para construção de Datalakes ou para utilização de plataformas de Full-Text Search (ElasticSearch, Apache Solr).
 
 ## Criação de banco de dados
 
@@ -65,7 +69,7 @@ select is_cdc_enabled,* from sys.databases where name in ('example_cdc')
 
 ## Configuração de tempo em que um log fica armazenado
 
-No CDC, há um processo de limpeza automática que é executado em intervalos regulares. Por padrão, o intervalo é de 3 dias, mas pode ser configurado. Observamos que, quando ativamos o CDC no banco de dados, existe um procedimento armazenado do sistema adicional criado com o nome sys.sp_cdc_cleanup_change_table, que limpa todos os dados rastreados no intervalo. 
+No CDC há um processo de limpeza automática que é executado em intervalos regulares. O padrão de intervalo é de 3 dias, no entanto é possível configura-lo de forma diversa. Observamos que, quando ativamos o CDC no banco de dados, um procedimento adicional é habilitado no sistema -sys.sp_cdc_cleanup_change_table - limpando todos os dados rastreados fora do intervalo.
 
 ```sql
 USE example_cdc
@@ -112,24 +116,18 @@ SELECT * FROM example_cdc.cdc.fn_cdc_get_all_changes_dbo_users(@begin_lsn,@end_l
 
 ## Ressalvas
 
-- No caso do Sqlserver as informações ficam armazenadas não utilizando logs a nível de arquivo, e sim a nível de tabelas, neste caso, deve ser utilizado com cautela, pois se o banco de dados já se encontra com baixa performance habilitando o cdc você pode estar gerando outros problemas maiores.
+No caso do SQL Server as informações ficam armazenadas utilizando tabelas para armazenar os logs e não arquivos. A utilização de tabela deve se dar com cautela, pois se o banco de dados já se encontrar com baixa performance habilitando o CDC você pode gerar problemas maiores.
 
 ![Arquitetura da solução](images/example_cdc-resalvas.png)
 
 
 ## Conclusão
 
-Na minha humilde opinião uma base de dados que já possui problemas de performance, muitas vezes pelo excesso de normalização dos dados esta abordagem deve ser aplicada com extrema cautela. Outro ponto é que por ser um banco relacional apenas escala de forma vertical, dado este cenário, o preço e a mão de obra de infra-estrutura tente a aumentar até chegar ao limite da tecnologia (limite de hardware) e tornar inviável manter a infra-estrutura.
-
-Salientando que no caso do sqlserver, até o momento desconheço como os outros bancos de dados armazenam estas informações.
+Acredito que numa base de dados que já possui problemas de performance (muitas vezes pelo excesso de normalização dos dados) esta abordagem deve ser aplicada com extrema cautela. Importante também levar em conta que, por se tratar de um banco de dados relacional que apenas escala de forma vertical, o preço e a mão de obra de infra-estrutura podem aumentar, chegando ao limite da tecnologia (limite de hardware), o que tornaria inviável a manutenção da infra-estrutura.
 
 ## Referências
 
-
 - [Habilitar e desabilitar o Change Data Capture (SQL Server)](https://docs.microsoft.com/pt-br/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017)
-
 - [Sobre o change data capture (SQL Server)](https://docs.microsoft.com/pt-br/sql/relational-databases/track-changes/about-change-data-capture-sql-server?view=sql-server-2017)
-
 - [Tabelas Change Data Capture (Transact-SQL)](https://docs.microsoft.com/pt-br/sql/relational-databases/system-tables/change-data-capture-tables-transact-sql?view=sql-server-2017)
-
 - [Procedimentos armazenados de captura de dados de alteração (Transact-SQL)](https://docs.microsoft.com/pt-br/sql/relational-databases/system-stored-procedures/change-data-capture-stored-procedures-transact-sql?view=sql-server-2017)
