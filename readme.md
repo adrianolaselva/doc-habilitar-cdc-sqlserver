@@ -101,7 +101,7 @@ SELECT * FROM example_cdc.cdc.fn_cdc_get_all_changes_dbo_users(@begin_lsn,@end_l
 
 ![Functions, procedures e tabelas geradas por schema quando habilitado o CDC](images/example_cdc-fns-per-table.png)
 
-## Exemplo de function gerada para obter os dados atravéz do CDC
+## Exemplo de function gerada para obter os dados através do CDC
 
 ![Exemplo de function gerada para obter os dados atravéz do CDC](images/example_cdc-fn-per-table.png)
 
